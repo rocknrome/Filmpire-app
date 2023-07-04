@@ -1,4 +1,4 @@
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from '@mui/styles';
 
 const drawerWidth = 240;
 
@@ -15,20 +15,23 @@ export default makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
   },
   drawer: {
-    marginRight: theme.spacing(2),
-    width: drawerWidth,
-    flexShrink: 0,
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
   },
   drawerPaper: {
     width: drawerWidth,
   },
   linkButton: {
-    '&:hover' : {
+    '&:hover': {
       color: 'white !important',
-      textDecoration: "none",
+      textDecoration: 'none',
     },
   },
 }));
