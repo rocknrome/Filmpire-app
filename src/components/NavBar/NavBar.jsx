@@ -16,20 +16,19 @@ const NavBar = () => {
 
   return (
     <>
-      <div className={classes.sidebar}>
-        <Drawer
-          variant={isMobile ? 'temporary' : 'permanent'}
-          anchor="top"
-          open={isMobile ? mobileOpen : true}
-          onClose={() => setMobileOpen(false)}
-          classes={{
-            paper: isMobile ? classes.drawerPaperMobile : classes.drawerPaper,
-          }}
-          ModalProps={{ keepMounted: true }}
-        >
-          <Sidebar setMobileOpen={setMobileOpen} />
-        </Drawer>
-      </div>
+      <Drawer
+        variant={isMobile ? 'temporary' : 'permanent'}
+        anchor="top"
+        open={isMobile ? mobileOpen : true}
+        onClose={() => setMobileOpen(false)}
+        classes={{
+          paper: isMobile ? classes.drawerPaperMobile : classes.drawerPaper,
+        }}
+        ModalProps={{ keepMounted: true }}
+      >
+        <Sidebar setMobileOpen={setMobileOpen} />
+      </Drawer>
+
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           {isMobile && (
@@ -43,10 +42,10 @@ const NavBar = () => {
               <Menu />
             </IconButton>
           )}
-          <IconButton color="inherit" onClick={() => {}}>
+          <IconButton color="inherit">
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
-          {!isMobile && <div>Search...</div>}
+          {!isMobile && ''}
           <div>
             {!isAuthenticated ? (
               <Button color="inherit" onClick={() => {}}>
