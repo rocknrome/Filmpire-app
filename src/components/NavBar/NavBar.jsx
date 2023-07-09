@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery } from '@mui/material';
-import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
+import { Menu, AccountCircle, Brightness4, Brightness7, Search } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import { ClassNames } from '@emotion/react';
 import useStyles from './styles';
 import { Sidebar } from '..';
 import { useTheme } from '@mui/system';
@@ -16,19 +15,20 @@ const NavBar = () => {
 
   return (
     <>
-      <Drawer
-        variant={isMobile ? 'temporary' : 'permanent'}
-        anchor="top"
-        open={isMobile ? mobileOpen : true}
-        onClose={() => setMobileOpen(false)}
-        classes={{
-          paper: isMobile ? classes.drawerPaperMobile : classes.drawerPaper,
-        }}
-        ModalProps={{ keepMounted: true }}
-      >
-        <Sidebar setMobileOpen={setMobileOpen} />
-      </Drawer>
-
+      <div className={classes.sidebar}>
+        <Drawer
+          variant={isMobile ? 'temporary' : 'permanent'}
+          anchor="top"
+          open={isMobile ? mobileOpen : true}
+          onClose={() => setMobileOpen(false)}
+          classes={{
+            paper: isMobile ? classes.drawerPaperMobile : classes.drawerPaper,
+          }}
+          ModalProps={{ keepMounted: true }}
+        >
+          <Sidebar setMobileOpen={setMobileOpen} />
+        </Drawer>
+      </div>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           {isMobile && (
@@ -45,7 +45,7 @@ const NavBar = () => {
           <IconButton color="inherit">
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
-          {!isMobile && ''}
+          {!isMobile && <div>Search...</div>}
           <div>
             {!isAuthenticated ? (
               <Button color="inherit" onClick={() => {}}>
